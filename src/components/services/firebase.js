@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import {addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where} from "firebase/firestore"
 const file='[firebase.js]'
+console.log(`${file}`)
 // todo: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,15 +19,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db=getFirestore(app)
-//console.log(`${file} | getDocs(productsRef): `,getDocs(productsRef))
-
-// export function obtenerProductos() {
-//     const productsRef=collection(db,"products")
-//     getDocs(productsRef).then((snapshot)=>{
-//        const productos= snapshot.docs.map((elem) => elem.data())
-//        console.log(`${file} | productos: `,productos)
-//     })
-// }
 
 export async function obtenerProductos() {
     const productsRef=collection(db,"products")
@@ -36,8 +28,8 @@ export async function obtenerProductos() {
         producto.id=elem.id
         return producto
     })
-    
     console.log(`${file}[fn: obtenerProductos] | productos: `,productos)
+
     return productos
 }
 
@@ -46,6 +38,7 @@ export async function getProducto(idParams){
     const docRef= doc(productsRef,idParams)
     const snapshot=await getDoc(docRef)
     console.log(`${file}[fn: getProducto] | snapshot.data(): `,snapshot.data())
+
     return {...snapshot.data(),id:snapshot.id}
 }
 
@@ -57,22 +50,19 @@ export async function getProductosByCategory(categoryURL) {
     const productos= snapshot.docs.map((elem) => {
         let producto=elem.data()
         producto.id=elem.id
+
         return producto
     })
     console.log(`${file}[fn: getProductosByCategory] | productos: `,productos)
+
     return productos
 }
 
 export async function createOrder(order) {
     const orderRef=collection(db,"order")
-    // addDoc(orderRef,order).then((respuesta) => { 
-    //     console.log(`${file} | respuesta: `,respuesta)
-    //     console.log(`${file} | respuesta.id: `,respuesta.id)
-
-    //  })
-
     let respuesta=await addDoc(orderRef,order)
-    console.log(`${file} | respuesta.id: `,respuesta.id)
+    console.log(`${file}[fn: createOrder] | respuesta.id: `,respuesta.id)
+
     return respuesta.id
 }
 

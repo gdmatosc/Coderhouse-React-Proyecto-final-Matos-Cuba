@@ -5,14 +5,16 @@ import { obtenerProductos } from "../services/firebase";
 import { useParams } from "react-router-dom";
 import Item from "./Item";
 import LoaderList from "../Loader/LoaderList";
+const file='[ItemListContainer.jsx]'
+
 
 function ItemListContainer(props) {
+    console.log(`${file}`)
     const [productos,setProductos]=useState([])
     const [isLoading, setIsLoading] = useState(true)
-    console.log("Renderizado ItemListContainer","background-color: blue")
+    console.log(`${file} (Renderizando)`)
     let { categoryid }=useParams()
-    console.log("Renderizando")
-
+  
     useEffect(()=>{
       if (!categoryid){
         obtenerProductos()
@@ -30,7 +32,10 @@ function ItemListContainer(props) {
         .finally(() => setIsLoading(false))
       }
     },[categoryid])
-    
+
+    console.log(`${file} (after.useEffect) productos: ${productos}`)
+    console.log(`${file} (after.useEffect) isLoading: ${isLoading}`)
+
     return ( 
         <div>
             
@@ -40,7 +45,6 @@ function ItemListContainer(props) {
                       {/* <h3>Cargando...</h3> */}
                       <LoaderList/>
                     </div>
-                    
                    : 
                    <div className="seccion1 md:mr-auto md:flex md:gap-4 font-bold text-2xl pt-4">
                       {productos.map((itemIterado)=>{
@@ -51,14 +55,9 @@ function ItemListContainer(props) {
                   </div>
                 }
                 
-
             <div className="seccion2">
-
               <br/>
-
-              <p>
-                 </p>
-                
+              <p></p> 
             </div>
         </div>
         
@@ -67,16 +66,3 @@ function ItemListContainer(props) {
 
 export default ItemListContainer;
 
-
-{/* <br/>
-
-<h1 className="text-3xl font-bold text-yellow-500" >
-  Inicio</h1>
-
-<br/> 
-      // return ()=> console.log('desmontamos ILC')
-
-<h2 className="text-2xl font-bold">
-  {props.text} </h2>
-
-<br/>  */}

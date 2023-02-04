@@ -1,8 +1,9 @@
-// import { useState } from "react"
 import { Link } from "react-router-dom"
 
 function Item(props) {
+    
   const {title,price,imgurl,category,id}=props.item
+
   return (
     <div >
         <div>

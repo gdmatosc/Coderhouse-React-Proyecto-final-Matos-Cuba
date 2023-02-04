@@ -9,56 +9,49 @@ import { useState } from 'react'
 const file='[CartContainer.jsx]'
 
 function CartContainer() {
-  const navigateTo=useNavigate()
-  //buyer:{name:"Santiago",email:"st@gmail.com",phone: 987654321},
-  const [orderId,setOrderId]=useState()
-  
-  const {cart,removeItem,getTotalPriceInCart,setCart}=useContext(cartContext)
-  console.log(`${file} cart: ${cart}`)
-  console.log(`${file} cart.length: ${cart.length}`)
-  //const Swal = require('sweetalert2')
-  function handleCheckOut(evt,userData) {
-    evt.preventDefault()
-    const items=cart.map(({id,price,title,count})=>({
-        id,price,title,count}))
-    const order={
-        buyer: userData,
-        items: items, //id,title,price,count
-        total: getTotalPriceInCart(),
-        date: new Date()
+
+    const navigateTo=useNavigate()
+    const [orderId,setOrderId]=useState()
+    const {cart,removeItem,getTotalPriceInCart,setCart}=useContext(cartContext)
+    console.log(`${file} cart: ${cart}`)
+    console.log(`${file} cart.length: ${cart.length}`)
+
+    function handleCheckOut(evt,userData) {
+        evt.preventDefault()
+        const items=cart.map(({id,price,title,count})=>({
+            id,price,title,count}))
+        const order={
+            buyer: userData,
+            items: items, 
+            total: getTotalPriceInCart(),
+            date: new Date()
     }
-    //console.log((`${file} | order: ${JSON.stringify(order)}`));
+    
     console.table(order)
+
     createOrder(order).then((id) => { 
-        //alert(`compraste x items, tu id is ${id}`)
         Swal.fire({
             title: 'Gracias por tu compra',
             text: `Este es tu ticket id ${id}`,
             icon: 'success',
             confirmButtonText: 'Listo'
-          }).then((result) => {
+            }).then((result) => {
             if (result.isConfirmed) {
-              console.log(`${file} Buena!`)
-              setCart([])
-              navigateTo(`/thank-you/${id}`)
+                console.log(`${file}[fn: createOrder] Buena!`)
+                setCart([])
+                navigateTo(`/thank-you/${id}`)
             }
-          })
-          
-     })
-
-    // createOrder(order).then((id) => { 
-    //     navigateTo(`/thank-you/${id}`)
-    //  })
-  }
+            })    
+        })
+    }
   
-  return (
+    return (
     <div>
         {
             cart.length==0 ?
                 <div>
                     <h1>Aún no ha agregado productos al carrito</h1>
                 </div>
-                
             :
             <div>
                 <h1 >Carrito de compras</h1>
@@ -74,7 +67,6 @@ function CartContainer() {
                             </tr>
                         </thead>
                         <tbody>
-
                             { cart.map((item) => (
                                 <tr key={item.id}>
                                     <td><img className='h-10'  src={item.imgurl} alt={item.title}/></td>
@@ -96,8 +88,7 @@ function CartContainer() {
                     </div>
                     <br></br>
                     <FormCheckOut onCheckOut={handleCheckOut} />
-                    {/* <button onClick={handleCheckOut} className="py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold " >
-                        Finalizar compra </button> */}
+                    
             </div>
             
         }
@@ -109,16 +100,3 @@ function CartContainer() {
 
 export default CartContainer
 
-//   let cartData=cart.map((item) => {
-    
-//     //console.log(`${file}[cart.map] | item: ${JSON.stringify(item.price)}`)
-//     console.log(`${file}[cart.map] | item: ${item.price}`)
-// })
-//   let cartString=JSON.stringify(cart)
-//   console.log(`${file} | cartString: ${cartString}`)
-//   console.log(`${file} | typeof cartString: ${typeof cartString}`)
-// //   console.log(`${file} | JSON.parse(JSON.stringify(cart)): ${JSON.parse(JSON.stringify(cart))}`)
-// //   console.log(`${file} | cart: ${cart}`)
-//   console.log(`${file} | cartData: ${JSON.stringify(cartData)}`)
-//   console.log(`${file} | cart.length: ${cart.length}`)
-//   console.log(`${file} | getTotalPriceInCart: ${getTotalPriceInCart()}`)

@@ -2,51 +2,43 @@
 import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
-//import { getProducto } from '../services/mockService'
 import { getProducto } from '../services/firebase'
 import { cartContext } from '../Storage/cartContext'
 import { useContext } from 'react'
+const file='[ItemDetailContainer.jsx]'
 
 function ItemDetailContainer() {
-  // declaracion de parametros
+  console.log(`${file}`)
   const [productos,setProductos]=useState([])
   const {addToCart,addedToCart,setAddedToCart,checkInCart}=useContext(cartContext)
   const [isInCart, setIsInCart] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  
-  console.log("[ItemDetailContainer.jsx](inicio)(msg) isInCart: ",isInCart)
-  console.log("[ItemDetailContainer.jsx](inicio)(msg) addedToCart: ",addedToCart)
+  console.log(`${file} | (inicio) isInCart: ${isInCart}`)
+  console.log(`${file} | (inicio) addedToCart: ${addedToCart}`)
   let params=useParams()  
-  console.log(params)
+  console.log(`${file} | params: ${params}`)
 
   function handleAddToCartInContainer(count) {
-    //setIsInCart(true)
     const productosCount={...productos,count: count}
     addToCart(productosCount)
   }
-  
 
   useEffect(() => {
-    
-    //setAddedToCart(false)
     // lectura de datos de bd de [productos]
     getProducto(params.itemid)
     .then((respuesta)=>{
         setProductos(respuesta)
-        console.log("[ItemDetailContainer.jsx][useEffect][getProducto.then] (msg) respuesta: ", respuesta)
+        console.log(`${file}[useEffect][fn: getProducto][.then] | respuesta: ${respuesta}`)
         checkInCart(respuesta)
         setIsLoading(false)
     })
     .catch((error) => alert(error))
   },[])
 
-  console.log(productos)
-
-  
+  console.log(`${file} (after.useEffect) productos: ${productos}`)
 
   return (
     <ItemDetail 
-        // titulo-img-prop.de cada [producto]
         isLoading={isLoading}
         isInCart={isInCart}
         handleAddToCart={handleAddToCartInContainer}
@@ -54,11 +46,8 @@ function ItemDetailContainer() {
         imgurl={productos.imgurl} 
         category={productos.category} 
         price={productos.price} 
-         
     /> 
   )
 }
 
 export default ItemDetailContainer
-
-// onAddToCart={handleAddToCart}

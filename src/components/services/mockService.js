@@ -1,3 +1,5 @@
+const file='[mockService.js]'
+console.log(`${file}`)
 const database=[
     {
         id:1,
@@ -41,7 +43,6 @@ const database=[
 function obtenerProductos() {
   return new Promise((resolve,reject)=>{
     setTimeout(()=>{
-        //reject("No hay items")
         resolve(database)
     },1000)
   })
@@ -54,8 +55,7 @@ function getProducto(idURL) {
         console.log(item.id,idURL)
         return item.id === parseInt(idURL)
     })
-
-    
+    console.log(`${file}[fn: getProducto] reqItem: ${reqItem}`)
     setTimeout(()=>{
         if (reqItem) 
             resolve(reqItem)
@@ -68,11 +68,10 @@ function getProducto(idURL) {
 function getProductosByCategory(categoryURL) {
     return new Promise((resolve,reject)=>{
       let reqItem=database.filter((item)=>{
-          console.log(item.id,categoryURL)
-          return item.category === categoryURL
+        console.log(`${file}[fn: getProductosByCategory] | item.id: ${item.id}, categoryURL: ${categoryURL}`)
+        return item.category === categoryURL
       })
   
-      
       setTimeout(()=>{
           if (reqItem) 
               resolve(reqItem)
@@ -85,8 +84,3 @@ function getProductosByCategory(categoryURL) {
 export default obtenerProductos
 
 export { getProducto, getProductosByCategory }
-
-//console.log("Connecting to backend...")
-
-// if(error) reject("Usuario no autorizado")
-//         else resolve(database)

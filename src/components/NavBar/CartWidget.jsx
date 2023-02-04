@@ -2,12 +2,14 @@
 import { useContext } from "react"
 import { cartContext } from "../Storage/cartContext"
 import { userContext } from "../Storage/userContext"
+const file='[CartWidget.jsx]'
 const CartWidget = () => {
+  console.log(`${file}`)
   const {cart,monitor,getTotalItemsInCart} = useContext(cartContext)
   const {user}=useContext(userContext)
   monitor()
-  console.log("[CartWidget.jsx](msg) cart: ",cart)
-  console.log("[CartWidget.jsx](msg) getTotalItemsInCart: ",getTotalItemsInCart())
+  console.log(`${file} | cart: ${cart}`)
+  console.log(`${file} | getTotalItemsInCart(): ${getTotalItemsInCart()}`)
 
   return (
     <div className="h-2 my-1 mr-32 flex">
@@ -22,5 +24,3 @@ const CartWidget = () => {
 }
 
 export default CartWidget
-
-//height="48" width="48"

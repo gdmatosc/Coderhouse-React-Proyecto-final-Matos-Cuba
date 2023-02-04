@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-
-const file='FormCheckOut.jsx'
+const file='[FormCheckOut.jsx]'
 
 function handleDigitosIngresadosNombre(evt) {
+    console.log(`${file}`)
     let key=evt.key.toLowerCase()
     const blockChars="0123456789#&%'\"*?()=\\[]{}+*|@-.;,¿¡/~$´^`°¬_!"
 
     if (blockChars.includes(key)) {
-        console.log("[Formulario.jsx](msg) Presionaste: ",key)
+        console.log(`${file}[fn: handleDigitosIngresadosNombre] | (presionaste) key: ${key}`)
         evt.preventDefault()
     }
   }
@@ -18,7 +18,7 @@ function handleDigitosIngresadosCorreo(evt) {
     const blockChars="#&%'\"*?()=\\[]{}+*|;,¿¡/~$´^`°¬_!"
 
     if (blockChars.includes(key)) {
-        console.log("[Formulario.jsx](msg) Presionaste: ",key)
+        console.log(`${file}[fn: handleDigitosIngresadosCorreo] | (presionaste) key: ${key}`)
         evt.preventDefault()
     }
   }
@@ -47,13 +47,12 @@ export default function FormCheckOut(props) {
   const {onCheckOut}=props
   const [userData,setUserData]=useState({name:"",phone:"",email:""})
   let fieldsForm=Object.keys(userData)
-  console.log(`${file}[fn: FormCheckOut] fieldsForm: ${fieldsForm}`)
-  console.log(`${file}[fn: FormCheckOut] userData: ${JSON.stringify(userData)}`)
+  console.log(`${file}[fn-main: FormCheckOut] fieldsForm: ${fieldsForm}`)
+  console.log(`${file}[fn-main: FormCheckOut] userData: ${JSON.stringify(userData)}`)
 
   function onInputChange(evt) {
     let value=evt.target.value
     let inputName=evt.target.name
-
     let newState={...userData}
     newState[inputName]=value
     setUserData(newState)
@@ -61,7 +60,7 @@ export default function FormCheckOut(props) {
 
   function onSubmit(evt) {
     evt.preventDefault()
-    console.log(`${file} Gracias por tu compra!`)
+    console.log(`${file}[fn-main: FormCheckOut] (Gracias por tu compra!)`)
   }
 
   function formIsInvalid() {
@@ -75,15 +74,15 @@ export default function FormCheckOut(props) {
     <div>
         <form onSubmit={onSubmit}>
             <h1>Llenar los datos de compra para finalizar</h1>
+
             {
-                fieldsForm.map((field)=>(
-                    <InputForm 
-                        value={userData[field]} name={field}  key={field}
-                        onChange={onInputChange} label={field} userData={userData} />
-                ))
+            fieldsForm.map((field)=>(
+                <InputForm 
+                    value={userData[field]} name={field}  key={field}
+                    onChange={onInputChange} label={field} userData={userData} />
+            ))
             }
-            {/* <button onClick={props.handleCheckOut} className="py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold " >
-                Finalizar compra </button> */}
+            
             <button type="submit" disabled={formIsInvalid()} className="py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold "
                 onClick={(evt)=> onCheckOut(evt,userData) } >
                 crear orden</button>
@@ -96,10 +95,4 @@ export default function FormCheckOut(props) {
   )
 }
 
-//   useEffect(() => {
-//     console.log(`${file}[fn: FormCheckOut] props: ${JSON.stringify(props)}`);
-//     console.log(`${file}[fn: FormCheckOut] props: ${JSON.stringify(onCheckOut())}`);
-  
-    
-//   }, [])
 
