@@ -1,17 +1,17 @@
 # Proyecto compuwork
-Proyecto final del curso de React
+Proyecto final del curso de React de Coderhouse
 ## Descripción de diseño de negocio
-El proyecto consiste en una tienda de productos tencológicos para computadoras
-Se tienen actualmente 4 productos clasificados en 3 categorías
-1. perifericos: dispositivos que se conectan directamente a la PC o laptop
-2. comunicaciones: dispositivos para comunicaciones de red por cable o wifi
-3. electricos: dispositivos que permiten conexiones electricas así como la estabilización de la corriente elétrica
+El proyecto consiste en una tienda de productos tencológicos para computadoras denominado Compuwork.
+Se tienen actualmente 6 productos clasificados en 3 categorías:
+1. Periféricos: dispositivos que se conectan directamente a la PC o laptop
+2. Comunicaciones: dispositivos para comunicaciones de red por cable o wifi
+3. Eléctricos: dispositivos que permiten conexiones electricas, luz así como la estabilización de la corriente elétrica
 
 ## Flujo de compras
 1. Al inicio se muestran directamente todos los productos
-2. Se da click en el botón de ver más para ir a la pantalla de detalle del producto
+2. Se da click en el botón de "ver más" para ir a la pantalla de detalle del producto
 3. Se puede aumentar o disminuir la cantidad de productos y se agrega al carrito con el botón agregar
-4. Se puede acceder al carrito de compras por el botón que aparece en la pantalla de detalles de cada producto o mediante el ícono de carrito de compras
+4. Se puede acceder al carrito de compras por el botón que aparece en la parte inferior del card de la página de detalles de cada producto o mediante el ícono de carrito de compras
 5. Para realizar la orden de compra se debe llenar los datos de compras que se encuentra debajo del resumen de producto del carrito
 6. Luego se da click en el botón generar compra y aparecerá un mensaje que le mostrará su cpodigo de compra
 
