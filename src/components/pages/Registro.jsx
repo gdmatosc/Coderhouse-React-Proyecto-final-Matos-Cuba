@@ -53,15 +53,15 @@ function Registro(props) {
  
 
   return (
-    <div className='container py-5 px-1 mx-auto text-center'>
+    <div className='seccion1 container m-8 py-4 px-1 mx-auto text-center '>
         {
             user!=="Anónimo" ?
-            <div><h1>Registrado!</h1></div>
+            <div><h1 className='py-24 text-blue-100 font-bold text-2xl'>Registrado!</h1></div>
             : 
             <div>
-                <h1 className='display-3 mb-5 text-3xl'> 
+                <h1 className='my-4 text-yellow-400 font-bold text-2xl'> 
                     Formulario de registro para promociones</h1>
-                <form onSubmit={handleOperacionesEnvioSubmit} className='container'>
+                <form className='inline-block bg-gray-900 mx-8 px-8 pt-8'  onSubmit={handleOperacionesEnvioSubmit}>
                     {/* ingreso de usuario */}
                     <div className="mb-6">
                         <label htmlFor="ejemplo" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white' >
@@ -84,13 +84,14 @@ function Registro(props) {
                                     txt: text-gray-900 text-sm dark:text-white |anim: 0 '
                             placeholder='ingrese su dirección' required/>
                     </div>
-                    <br></br>
+                    
                     {/* envío de datos */}
                     <div >
-                        <button type="submit" className='py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold'>
+                        <button type="submit" className=' mb-4 py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold'>
                         Enviar</button>
                     </div>
                 </form>
+                <div className='p-8'></div>
             </div>
         }
         

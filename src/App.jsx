@@ -26,7 +26,7 @@ function App() {
   
   return (
 
-    <div className="body">
+    <div className="seccion1 body">
       <BrowserRouter>
         <UserProvider>
           <CartProvider>
@@ -48,7 +48,8 @@ function App() {
               element={<CartContainer/>}/>
 
               <Route path="/thank-you/:orderid"
-              element={<div><br/><h2>Gracias por su compra!</h2></div>} />
+              element={<div><br/><h2 className='py-24 text-blue-100 font-bold text-2xl'>
+                Gracias por su compra!</h2></div>} />
 
               <Route path="*" 
               element={<PageNotFound/>}/>

@@ -3,9 +3,9 @@ Proyecto final del curso de React
 ## Descripción de diseño de negocio
 El proyecto consiste en una tienda de productos tencológicos para computadoras
 Se tienen actualmente 4 productos clasificados en 3 categorías
-perifericos: dispositivos que se conectan directamente a la PC o laptop
-comunicaciones: dispositivos para comunicaciones de red por cable o wifi
-electricos: dispositivos que permiten conexiones electricas así como la estabilización de la corriente elétrica
+1. perifericos: dispositivos que se conectan directamente a la PC o laptop
+2. comunicaciones: dispositivos para comunicaciones de red por cable o wifi
+3. electricos: dispositivos que permiten conexiones electricas así como la estabilización de la corriente elétrica
 
 ## Flujo de compras
 1. Al inicio se muestran directamente todos los productos
@@ -16,15 +16,18 @@ electricos: dispositivos que permiten conexiones electricas así como la estabil
 6. Luego se da click en el botón generar compra y aparecerá un mensaje que le mostrará su cpodigo de compra
 
 Opcionalmente
-1. Si el usuario lo desea puede dar click en el botón registro en cualquier momento para que su nombre de usuario de la web pase de anónimo a su nombre, considerar que este registro no tiene relación con los datos de compra.
+- Si el usuario lo desea puede dar click en el botón registro en cualquier momento para que su nombre de usuario de la web pase de anónimo a su nombre, considerar que este registro no tiene relación con los datos de compra.
 
 ## Limitaciones técnicas
-1. No se ha implementado el control de stock
-2. No se ha implementado la eliminación por producto mediante el ícono de X
+1. No se ha implementado el control de stock, solo se encuentra como atributo de bd para cada producto con un valor de 5 
+2. No se ha implementado la eliminación por producto, solo se muestra el ícono X
+3. No se ha implementado el resumen de la creación de orden de compra, solo se ha generado la página thank-you conteniendo el id del orden en la url con el mensaje gracias por su compra
+4. No se ha implementado la lógica de repetir el email 2 veces, solo se ha desarrollado el control de ingreso de dígitos en todos los input
+5. Netlify está mostrando su propio mensaje de page not found para rutas inexistentes, a pesar que la configuración local funciona con PageNotFound.jsx
 
 ## Librerias usadas
 Se ha usado:
-1. tailwind
-2. vite
+1. tailwind: reduce la cantidad de archivos de css y facilita su uso
+2. vite: optimiza la ejecución de React y reduce sus vulnerabilidades
 3. sweetalert
 4. react-router

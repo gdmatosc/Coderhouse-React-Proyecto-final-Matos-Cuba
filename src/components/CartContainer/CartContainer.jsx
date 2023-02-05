@@ -46,49 +46,52 @@ function CartContainer() {
     }
   
     return (
-    <div>
+    <div className='seccion1'>
         {
             cart.length==0 ?
-                <div>
-                    <h1>Aún no ha agregado productos al carrito</h1>
-                </div>
+                
+                    <h1 className='py-24 text-blue-100 font-bold text-2xl'>Aún no ha agregado productos al carrito</h1>
+                
             :
-            <div>
-                <h1 >Carrito de compras</h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Miniatura</th>
-                                <th>Titulo</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Remover</th>
-                                <th>Total</th>
+            <div className='shadow-md sm:rounded-lg' >
+                <h1 className='my-4 text-yellow-400 font-bold text-2xl' >Carrito de compras</h1>
+                    <table  className="mx-auto text-sm text-left text-white bg-gray-500">
+                        <thead className="text-xs  text-gray-100 uppercase bg-gray-700 ">
+                            <tr >
+                                <th className="px-6 py-3">Miniatura</th>
+                                <th className="px-6 py-3">Titulo</th>
+                                <th className="px-6 py-3">Precio</th>
+                                <th className="px-6 py-3">Cantidad</th>
+                                <th className="px-6 py-3"> Remover</th>
+                                <th className="px-6 py-3">Sub total</th>
                             </tr>
                         </thead>
                         <tbody>
                             { cart.map((item) => (
-                                <tr key={item.id}>
-                                    <td><img className='h-10'  src={item.imgurl} alt={item.title}/></td>
-                                    <td>{item.title}</td>
-                                    <td>{item.price}</td>
-                                    <td>{item.count}</td>
-                                    <td>
+                                <tr className=" border-b bg-gray-900 border-gray-700" key={item.id}>
+                                    <td className="px-6 py-3"><img className='h-10'  src={item.imgurl} alt={item.title}/></td>
+                                    <td className="px-6 py-3">{item.title}</td>
+                                    <td className="px-6 py-3">{item.price}</td>
+                                    <td className="px-6 py-3">{item.count}</td>
+                                    <td className="px-6 py-3">
                                         <button className="mr-auto my-3 py-2 px-2 rounded bg-red-600 hover:bg-red-800 text-white font-bold ">
                                             X</button>
                                     </td>
-                                    <td>{item.price*item.count}</td>
+                                    <td className="px-6 py-4 font-bold text-yellow-300">{item.price*item.count}</td>
                                 </tr>
                                 ))}
                         </tbody>
                     </table>
-                            
-                    <div>
-                        <h4>El total de tu compra es: ${getTotalPriceInCart()}</h4>
+                    <br></br>  
+                    <div >
+                        <h2  >
+                            <span className='text-white'>El total de tu compra es: </span>
+                            <span className=' rounded-lg bg-yellow-100 font-bold text-xl text-black p-2 m-2 '>${getTotalPriceInCart()}</span></h2>
                     </div>
-                    <br></br>
-                    <FormCheckOut onCheckOut={handleCheckOut} />
                     
+                    <h1 className='my-6 text-yellow-400 font-bold text-2xl' >Llenar los datos de compra para finalizar</h1>
+                    <FormCheckOut onCheckOut={handleCheckOut} />
+                    <div className='p-8'></div>
             </div>
             
         }

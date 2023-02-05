@@ -36,17 +36,21 @@ function ItemDetailContainer() {
   },[])
 
   console.log(`${file} (after.useEffect) productos: ${productos}`)
-
+  //items-center
   return (
+    <div className="seccion1 flex justify-center -mx-4 font-bold text-2xl">
+
     <ItemDetail 
         isLoading={isLoading}
         isInCart={isInCart}
         handleAddToCart={handleAddToCartInContainer}
         title={productos.title} 
         imgurl={productos.imgurl} 
+        detail={productos.detail} 
         category={productos.category} 
         price={productos.price} 
-    /> 
+        /> 
+    </div>
   )
 }
 

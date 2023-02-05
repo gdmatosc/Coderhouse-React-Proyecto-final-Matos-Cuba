@@ -24,9 +24,10 @@ function handleDigitosIngresadosCorreo(evt) {
   }
 
 function InputForm(props) {
+    //style={{width:"100px",marginRight:4}}
     return(
-        <div  style={{display:"flex",marginBottom: 8}}>
-            <label style={{width:"100px",marginRight:4}}>
+        <div className='flex mb-6' >
+            <label className='mx-2 px-2' >
                 {props.label}</label>
             {
                 props.name=="name" ?
@@ -71,9 +72,9 @@ export default function FormCheckOut(props) {
   } 
 
   return (
-    <div>
-        <form onSubmit={onSubmit}>
-            <h1>Llenar los datos de compra para finalizar</h1>
+    <div className='text-center'>
+        <form className='inline-block bg-gray-900 mx-8 px-8 pt-8' onSubmit={onSubmit}>
+            
 
             {
             fieldsForm.map((field)=>(
@@ -82,14 +83,15 @@ export default function FormCheckOut(props) {
                     onChange={onInputChange} label={field} userData={userData} />
             ))
             }
-            
-            <button type="submit" disabled={formIsInvalid()} className="py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold "
+            <div className='flex justify-around'>
+            <button type="submit" disabled={formIsInvalid()} className="mb-4 py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold "
                 onClick={(evt)=> onCheckOut(evt,userData) } >
-                crear orden</button>
-            <span> </span>
-            <button className="mr-auto my-3 py-2 px-2 rounded bg-red-600 hover:bg-red-800 text-white font-bold "
+                Crear orden</button>
+            
+            <button className="mb-4 py-2 px-4 rounded bg-red-600 hover:bg-red-800 text-white font-bold "
                 onClick={()=>setUserData({name:"",phone:"",email:""})}>
                 Limpiar</button>
+            </div>
         </form>
     </div>
   )

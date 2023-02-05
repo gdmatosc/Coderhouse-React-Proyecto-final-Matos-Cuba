@@ -10,15 +10,18 @@ function NavBar(props){
     test()
 
     return(
-        <header className=" bg-teal-600 md:flex px-4 flexitems-center mb-0 gap-16">
+        <header className=" bg-teal-800 md:flex px-4 flexitems-center  gap-16">
             <Link to="/">
                 <img src="/compuwork_icon_bg.svg" alt="img" className="mr-auto my-0.5 h-16 md:mr-0"/>
             </Link>
 
-            <nav className="md:mr-auto md:flex md:gap-4 font-bold text-2xl pt-4">
-                <Link to="/category/perifericos">Perifericos</Link>
-                <Link to="/category/comunicaciones">Comunicaciones</Link> 
-                <Link to="/category/electricos">Electricos</Link>
+            <nav className="mr-auto flex sm:gap-2 md:gap-8  md:justify-between font-bold sm:text-xl md:text-2xl  text-white pt-4">
+                <Link to="/category/perifericos" className="hover:text-yellow-400" >
+                    Perifericos</Link>
+                <Link to="/category/comunicaciones" className="hover:text-yellow-400" >
+                    Comunicaciones</Link> 
+                <Link to="/category/electricos" className="hover:text-yellow-400" >
+                    Electricos</Link>
             </nav>
             
             <div className="md:mr-auto md:flex md:gap-4" >

@@ -28,8 +28,8 @@
 /* #endregion */
 
 .seccion1 {
-  border: 5px;
-  padding: 10px;
+  border: 0px;
+  padding: 0px;
   border-style: solid;
   border-color:rgb(40, 86, 133);
   background-color: rgb(44, 20, 97);

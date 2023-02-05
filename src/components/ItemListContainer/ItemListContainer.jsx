@@ -12,6 +12,7 @@ function ItemListContainer(props) {
     console.log(`${file}`)
     const [productos,setProductos]=useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [centerItems, setCenterItems]=useState('')
     console.log(`${file} (Renderizando)`)
     let { categoryid }=useParams()
   
@@ -20,6 +21,7 @@ function ItemListContainer(props) {
         obtenerProductos()
         .then((respuesta)=>{
           setProductos(respuesta);
+          setCenterItems('flex-wrap')
         })
         .catch((error) => alert(error))
         .finally(() => setIsLoading(false))
@@ -28,6 +30,7 @@ function ItemListContainer(props) {
         .then((respuesta)=>{
           setProductos(respuesta)
           setIsLoading(false)
+          setCenterItems('justify-center')
         })
         .finally(() => setIsLoading(false))
       }
@@ -46,7 +49,7 @@ function ItemListContainer(props) {
                       <LoaderList/>
                     </div>
                    : 
-                   <div className="seccion1 md:mr-auto md:flex md:gap-4 font-bold text-2xl pt-4">
+                   <div className={`seccion1 flex ${centerItems} font-bold text-2xl`} >
                       {productos.map((itemIterado)=>{
                        return(
                          <Item 
