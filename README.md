@@ -28,7 +28,8 @@ Opcionalmente
 4. Se ha implementado la lógico de verificación del email ingresado 2 veces, aparece un mensaje de advertencia si no coinciden los dos emails cuando se termina de ingresar el segundo email
 ~~3. No se ha implementado el resumen de la creación de orden de compra, solo se ha generado la página thank-you conteniendo el id del orden en la url con el mensaje gracias por su compra~~
 ~~4. No se ha implementado la lógica de repetir el email 2 veces, solo se ha desarrollado el control de ingreso de dígitos en todos los input~~
-1. Netlify está mostrando su propio mensaje de page not found para rutas inexistentes, a pesar que la configuración local funciona con PageNotFound.jsx
+5. Netlify está mostrando su propio mensaje de page not found para rutas inexistentes, a pesar que la configuración local funciona con PageNotFound.jsx
+6. Netlify está mostrando el mensaje de Page not found al digitar directamente una url válida o al actualizar una ruta válida
 
 ## 4.Librerias usadas 🔒🔧
 Se ha usado:
