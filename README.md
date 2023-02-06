@@ -1,5 +1,6 @@
 # Proyecto compuwork 💻
-Proyecto final del curso de React de Coderhouse
+Proyecto final del curso de React de Coderhouse.
+
 Se ha agregado 3 archivos .gif que muestran las principales funcionalidades de la aplicación que ha sido desplegada en Netlify
 
 ## 1. Descripción de diseño de negocio 💼
