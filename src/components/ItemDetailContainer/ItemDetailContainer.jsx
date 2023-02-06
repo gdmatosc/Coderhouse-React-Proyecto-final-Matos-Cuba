@@ -16,7 +16,8 @@ function ItemDetailContainer() {
   console.log(`${file} | (inicio) isInCart: ${isInCart}`)
   console.log(`${file} | (inicio) addedToCart: ${addedToCart}`)
   let params=useParams()  
-  console.log(`${file} | params: ${params}`)
+  console.log(`${file} | params: ${JSON.stringify(params)}`)
+  console.log(`${file} | params.itemid: ${params.itemid}`)
 
   function handleAddToCartInContainer(count) {
     const productosCount={...productos,count: count}

@@ -19,7 +19,7 @@ function ItemDetail(props) {
     //sm:px-32 sm:mx-32 md:px-32 md:mx-32 lg:px-48 lg:mx-48
     return (
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-4  ">
-        <div className="ly: block overflow-hidden |bxsz: 0 |br: rounded-lg |bgr: bg-white text-black">
+        <div className="block overflow-hidden rounded-lg bg-white text-black">
           <br></br>
           {
            isLoading ?
@@ -36,14 +36,14 @@ function ItemDetail(props) {
                     <br></br>
                     {/* title.[producto] */}
                     <div>
-                        <h2 className="bxsz: mt-2 mb-2 |br: 0 |bgr: 0 |txt: font-bold text-black |anim: 0" >
+                        <h2 className="mt-2 mb-2 | font-bold text-black |anim: 0" >
                           {title}</h2>
-                        <p className="txt: text-sm text-black |anim: 0 ">
+                        <p className="text-sm text-black |anim: 0 ">
                           {detail}</p>
-                        <span className="ly: inline-block |bxsz: px-2 py-1 leading-none |br: rounded-full |bgr: bg-orange-200 |txt: text-orange-800 font-semibold uppercase tracking-wide text-xs |anim: 0 ">
+                        <span className="inline-block | px-2 py-1 leading-none | rounded-full |  bg-orange-200 | text-orange-800 font-semibold uppercase tracking-wide text-xs |anim: 0 ">
                         {category}</span>
                     </div>
-                    <div className="ly: flex flex-row |bxsz: space-x-1 py-4 m-4 |br: border-t border-b border-gray-200 |bgr: 0 |txt: text-grey-500 |anim: 0 ">
+                    <div className="flex flex-row | space-x-1 py-4 m-4 | border-t border-b border-gray-200 | text-grey-500 ">
                       <div className='text-center m-auto'>
                         <span className=" inline-block  txt: font-bold text-2xl text-black">
                         $ {price}</span>

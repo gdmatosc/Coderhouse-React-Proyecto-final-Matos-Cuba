@@ -45,7 +45,6 @@ function ItemListContainer(props) {
                 {
                   isLoading ?
                     <div>
-                      {/* <h3>Cargando...</h3> */}
                       <LoaderList/>
                     </div>
                    : 

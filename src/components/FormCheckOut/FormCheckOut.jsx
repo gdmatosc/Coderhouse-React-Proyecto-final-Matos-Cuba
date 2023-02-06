@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 const file='[FormCheckOut.jsx]'
+let timeoutInput
 
 function handleDigitosIngresadosNombre(evt) {
     console.log(`${file}`)
@@ -24,20 +25,22 @@ function handleDigitosIngresadosCorreo(evt) {
   }
 
 function InputForm(props) {
-    //style={{width:"100px",marginRight:4}}
     return(
         <div className='flex mb-6' >
-            <label className='mx-2 px-2' >
+            <label className='mx-2 px-2 w-32' >
                 {props.label}</label>
             {
                 props.name=="name" ?
                     <input onKeyDown={handleDigitosIngresadosNombre} value={props.value} 
-                        name={props.name} type="text" onChange={props.onChange} />
+                        name={props.name} type="text" onChange={props.onChange}  />
                 : props.name=="phone" ?
                     <input value={props.value} 
-                        name={props.name} type="number" onChange={props.onChange} />
+                        name={props.name} type="number" onChange={props.onChange}  />
+                : props.name=="email" ?
+                    <input value={props.value} 
+                        name={props.name} type="text" onChange={props.onChange}  />
                 :   <input onKeyDown={handleDigitosIngresadosCorreo} value={props.value} 
-                        name={props.name} type="text" onChange={props.onChange} />
+                        name={props.name} type="text" onChange={props.onChange}  />
             }
             
         </div>
@@ -47,7 +50,10 @@ function InputForm(props) {
 export default function FormCheckOut(props) {
   const {onCheckOut}=props
   const [userData,setUserData]=useState({name:"",phone:"",email:""})
+  const [email2,setEmail2]=useState("")
+  const [emailValidate, setEmailValidate] = useState(true)
   let fieldsForm=Object.keys(userData)
+  
   console.log(`${file}[fn-main: FormCheckOut] fieldsForm: ${fieldsForm}`)
   console.log(`${file}[fn-main: FormCheckOut] userData: ${JSON.stringify(userData)}`)
 
@@ -58,6 +64,30 @@ export default function FormCheckOut(props) {
     newState[inputName]=value
     setUserData(newState)
   }
+
+  function onInputEmailChange(evt) {
+    let value=evt.target.value
+    clearTimeout(timeoutInput)
+    console.log(`${file}[fn: onInputEmailChange][antes de fn-timeout] timeout: ${timeoutInput}`)
+    setEmail2(value)
+    setEmailValidate(true)
+
+    timeoutInput=setTimeout(()=>{
+        // console.log(`${file}[fn: onInputEmailChange] (email validacion 1) value: ${value}`)
+        // console.log(`${file}[fn: onInputEmailChange] (email validacion 2) emailV: ${email2}`)
+        // console.log(`${file}[fn: onInputEmailChange] (email original) userData.email: ${userData.email}`)
+        // console.log(`${file}[fn: onInputEmailChange][antes de if] emailValidate: ${emailValidate}`)
+        if (value!==userData.email){
+            
+            console.log(`${file}[fn: onInputEmailChange][if] (email validacion 2) emailV: ${email2}`)
+            setEmailValidate(false)
+            console.log(`${file}[fn: onInputEmailChange][if] emailValidate: ${emailValidate}`)
+        }
+    },500)
+    
+    console.log(`${file}[fn: onInputEmailChange][despues de fn-timeout] timeout: ${timeoutInput}`)
+  }
+
 
   function onSubmit(evt) {
     evt.preventDefault()
@@ -82,6 +112,15 @@ export default function FormCheckOut(props) {
                     value={userData[field]} name={field}  key={field}
                     onChange={onInputChange} label={field} userData={userData} />
             ))
+            }
+            <InputForm
+                    value={email2} name='email2'  key='email2' 
+                    onChange={onInputEmailChange} label='repita el email por favor' aria-autocomplete="both" aria-haspopup="false" />
+            {
+                emailValidate?
+                <div></div>
+                :
+                <div><p className='pb-4 text-red-600'>Los emails no coinciden❗</p></div>
             }
             <div className='flex justify-around'>
             <button type="submit" disabled={formIsInvalid()} className="mb-4 py-2 px-4 rounded bg-teal-500 hover:bg-teal-800 text-white font-bold "

@@ -69,8 +69,8 @@ function Registro(props) {
                         </label>
                         <input onKeyDown={handleDigitosIngresadosNombre}
                             type="text" id="ejemplo"
-                            className='ly: block |bxsz: w-full p-2.5 |br: border-gray-300 rounded-lg focus:border-blue-500 |bgr: bg-gray-50 border focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 |
-                                    txt: text-gray-900 text-sm dark:text-white |anim: 0 '
+                            className='block | w-full p-2.5 | border-gray-300 rounded-lg focus:border-blue-500 | bg-gray-50 border focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 |
+                                    text-gray-900 text-sm dark:text-white'
                             placeholder='ingrese su nombre' required/>
                     </div>
                     {/* ingreso de dirección */}
@@ -80,8 +80,8 @@ function Registro(props) {
                         </label>
                         <input onKeyDown={handleDigitosIngresadosDireccion} 
                             type="ejemplo" id="ejemplo"
-                            className='ly: block |bxsz: w-full p-2.5 |br: border-gray-300 rounded-lg focus:border-blue-500 |bgr: bg-gray-50 border focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 |
-                                    txt: text-gray-900 text-sm dark:text-white |anim: 0 '
+                            className='block | w-full p-2.5 | border-gray-300 rounded-lg focus:border-blue-500 | bg-gray-50 border focus:ring-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 |
+                                    text-gray-900 text-sm dark:text-white '
                             placeholder='ingrese su dirección' required/>
                     </div>
                     
@@ -100,11 +100,3 @@ function Registro(props) {
 }
 
 export default Registro
-
-//onchange: aplica despues de realizar la acción
- // function handleUsuarioIngresado(evt) {
-  //   evt.preventDefault()
-  //   let user=evt.target.elements[0].value
-  //   console.log("[Registro.jsx][handleUsuarioIngresado](msg) user: ",user)
-  //   //props.onLogin(user)
-  // }

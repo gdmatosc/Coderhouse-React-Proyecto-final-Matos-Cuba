@@ -58,6 +58,15 @@ export async function getProductosByCategory(categoryURL) {
     return productos
 }
 
+export async function getOrden(idParams){
+    const orderRef=collection(db,"order")
+    const docRef= doc(orderRef,idParams)
+    const snapshot=await getDoc(docRef)
+    console.log(`${file}[fn: getOrder] | snapshot.data(): `,snapshot.data())
+
+    return {...snapshot.data(),id:snapshot.id}
+}
+
 export async function createOrder(order) {
     const orderRef=collection(db,"order")
     let respuesta=await addDoc(orderRef,order)

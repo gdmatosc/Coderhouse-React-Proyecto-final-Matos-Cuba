@@ -14,6 +14,7 @@ import app, {obtenerProductos} from './components/services/firebase'
 import CartContainer from './components/CartContainer/CartContainer'
 import Registro from './components/pages/Registro'
 import PageNotFound from './components/pages/PageNotFound'
+import MiOrden from './components/pages/MiOrden'
 const file='[App.jsx]'
 /* #endregion */
 
@@ -47,9 +48,8 @@ function App() {
               <Route path="/cart" 
               element={<CartContainer/>}/>
 
-              <Route path="/thank-you/:orderid"
-              element={<div><br/><h2 className='py-24 text-blue-100 font-bold text-2xl'>
-                Gracias por su compra!</h2></div>} />
+              <Route path="/miOrden/:orderid"
+              element={<MiOrden/>} />
 
               <Route path="*" 
               element={<PageNotFound/>}/>
